@@ -1,0 +1,54 @@
+{
+  "name": "egg-init",
+  "version": "1.0.1",
+  "description": "Init egg app helper tools.",
+  "scripts": {
+    "ci": "npm run lint && egg-bin cov",
+    "cov": "egg-bin cov",
+    "lint": "eslint bin lib test",
+    "test": "npm run lint && egg-bin test"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "egg-init": "bin/egg-init.js"
+  },
+  "files": [
+    "bin"
+  ],
+  "dependencies": {
+    "co": "^4.6.0",
+    "colors": "^1.1.2",
+    "commander": "^2.9.0",
+    "egg-init-config": "1",
+    "inquirer": "^0.11.0",
+    "npm-updater": "^1.1.0",
+    "rimraf": "^2.5.3",
+    "tar": "^2.2.1",
+    "through2": "^2.0.0",
+    "urllib": "^2.5.0",
+    "vinyl-fs": "^2.2.1"
+  },
+  "devDependencies": {
+    "egg-bin": "1",
+    "coffee": "3",
+    "eslint": "3",
+    "eslint-config-egg": "3"
+  },
+  "homepage": "https://github.com/eggjs/egg-init",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eggjs/egg-init.git"
+  },
+  "bugs": {
+    "email": "fengmk2@gmail.com",
+    "url": "https://github.com/eggjs/egg/issues"
+  },
+  "keywords": [
+    "egg",
+    "egg-init"
+  ],
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "author": "fengmk2 <fengmk2@gmail.com> (http://fengmk2.com)"
+}
