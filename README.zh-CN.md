@@ -40,12 +40,9 @@ $ egg-init --type simple [dest]
 
 ```bash
 $ egg-init dest
-? 请选择应用类型 (Use arrow keys)
-  buc - 适用于基于 buc 的阿里内部应用
-❯ ali - 适用于阿里集团对外应用
-  alipay - 适用于支付宝普通应用
-  react - 适用于支付宝 react 应用
-  plugin - egg 插件
+? Please select a boilerplate type (Use arrow keys)
+❯ simple - Simple egg app
+  plugin - egg plugin
 ```
 
 ## 自定义模板

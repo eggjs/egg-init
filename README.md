@@ -30,48 +30,45 @@ $ npm i egg-init -g
 $ egg-init -h
 ```
 
-## Create a `simeple` type application.
+## Create a `simeple` type application
 
 ```bash
 $ egg-init --type simple [dest]
 ```
 
-## 不输入类型可以选择
+## Or select a boilerplate by yourself
 
 ```bash
 $ egg-init dest
-? 请选择应用类型 (Use arrow keys)
-  buc - 适用于基于 buc 的阿里内部应用
-❯ ali - 适用于阿里集团对外应用
-  alipay - 适用于支付宝普通应用
-  react - 适用于支付宝 react 应用
-  plugin - egg 插件
+? Please select a boilerplate type (Use arrow keys)
+❯ simple - Simple egg app
+  plugin - egg plugin
 ```
 
-## 自定义模板
+## Custom a boilerplate
 
-自定义模板采用 npm 包的形式管理
+We use npm package to manager boilerplate, you can follow this steps:
 
-- 新建仓库如 [egg-boilerplate-plugin](https://github.com/eggjs/egg-boilerplate-plugin)
-- boilerplate 目录下存放所有的初始化文件
-- index.js 文件可以声明要替换的变量，在 boilerplate 文件夹中写模板的时候，可以通过 `{{name}}` 占位符的方式进行替换
+- Create a new repo like [egg-boilerplate-plugin](https://github.com/eggjs/egg-boilerplate-plugin)
+- Put all files under `boilerplates` dir
+- `index.js` can define variables which can be useed on template, like `{{name}}`.
 
-```js
-module.exports = {
-  name: {
-    desc: '插件名',
-  },
-  description: {
-    desc: '插件描述',
-  },
-  author: {
-    desc: '作者',
-  },
-};
-```
+    ```js
+    module.exports = {
+      name: {
+        desc: 'plugin-name',
+      },
+      description: {
+        desc: 'my best plugin',
+      },
+      author: {
+        desc: 'fengmk2',
+      },
+    };
+    ```
 
-- 更新依赖关系，只需要指定你的包名，更新到 [egg-init-config](https://github.com/eggjs/egg-init-config) 这个模块的 pacakge.json 中 `config.boilerplate` 字段
-- 发布模板（和配置）到 npm
+- Add your package name to [egg-init-config](https://github.com/eggjs/egg-init-config)'s pacakge.json  `config.boilerplate` property
+- Publish your package to npm
 
 ## License
 

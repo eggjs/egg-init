@@ -23,7 +23,7 @@ const REGISTRY = 'https://registry.npm.taobao.org';
 const CONFIG_URL = `${REGISTRY}/egg-init-config/latest`;
 
 co(function* () {
-  // 检查是否需要升级
+  // check cli update
   yield updater({
     package: pkg,
     registry: REGISTRY,
