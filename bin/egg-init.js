@@ -92,17 +92,25 @@ function* getDest() {
 
   while (!dest) {
     dest = inputDest || (yield ask('Please enter dest dir (default is current dir): ')) || '.';
+    inputDest = null;
     dest = path.resolve(process.cwd(), dest);
-    if (fs.existsSync(dest) &&
-      (!fs.statSync(dest).isDirectory() || fs.readdirSync(dest).length)) {
-      log(`${dest.red} file already exists`);
-      dest = null;
-      inputDest = null;
+    if (fs.existsSync(dest)) {
+      if (!fs.statSync(dest).isDirectory()) {
+        log(`${dest.red} already exists as a file`);
+        dest = null;
+        continue;
+      }
+      const files = fs.readdirSync(dest);
+      if (files.length > 1 || files[0] !== '.git') {
+        log(`${dest.red} already exists and not empty`);
+        dest = null;
+        continue;
+      }
     }
-  }
 
-  log(`dest dir is ${dest.green}`);
-  return dest;
+    log(`dest dir is ${dest.green}`);
+    return dest;
+  }
 }
 
 function* getVars(questionFile) {
