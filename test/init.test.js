@@ -15,11 +15,12 @@ describe('test/init.test.js', () => {
     rimraf.sync(tmp);
   });
 
-  it('should work with args --type', done => {
-    coffee.fork(eggInitBin, [ '--type', 'simple', 'tmp' ])
+  it.skip('should work with args --type', done => {
+    coffee.fork(eggInitBin, [ '--type', 'plugin', 'tmp' ])
     .expect('stdout', /\[egg-init\] Download/)
     .expect('code', 0)
-    .end(err => {
+    .end((err, res) => {
+      console.log(res.stdout);
       assert(!err, err && err.message);
       assert(fs.existsSync(path.join(tmp, 'package.json')));
       done();
