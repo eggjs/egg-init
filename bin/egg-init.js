@@ -100,9 +100,9 @@ function* getDest() {
         dest = null;
         continue;
       }
-      const files = fs.readdirSync(dest);
-      if (files.length > 1 || files[0] !== '.git') {
-        log(`${dest.red} already exists and not empty`);
+      const files = fs.readdirSync(dest).filter(name => name[0] !== '.');
+      if (files.length >= 1) {
+        log(`${dest.red} already exists and not empty: ${JSON.stringify(files)}`);
         dest = null;
         continue;
       }
@@ -141,7 +141,7 @@ function* getVars(questionFile) {
 }
 
 function* downloadTemplates(module) {
-  const url = `http://registry.npm.alibaba-inc.com/${module}/latest`;
+  const url = `${REGISTRY}/${module}/latest`;
   const result = yield urllib.request(url, {
     dataType: 'json',
   });
