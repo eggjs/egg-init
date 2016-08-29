@@ -61,7 +61,7 @@ function* getBoilerplates() {
     });
     pkg = res.data;
   } catch (err) {
-    pkg = require('@ali/egg-init-config/package.json');
+    pkg = require('egg-init-config/package.json');
   }
   return pkg.config.boilerplate;
 }
