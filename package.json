@@ -21,6 +21,7 @@
     "commander": "^2.9.0",
     "egg-init-config": "1",
     "inquirer": "^0.11.0",
+    "mkdirp": "^0.5.1",
     "npm-updater": "^1.1.0",
     "rimraf": "^2.5.3",
     "tar": "^2.2.1",

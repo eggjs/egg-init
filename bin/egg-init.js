@@ -15,6 +15,7 @@ const tar = require('tar');
 const co = require('co');
 const urllib = require('urllib');
 const updater = require('npm-updater');
+const mkdirp = require('mkdirp');
 const pkg = require('../package.json');
 
 require('colors');
@@ -32,20 +33,48 @@ co(function* () {
   const keys = Object.keys(boilerplate);
 
   program
-    .usage('[--type alipay] [dest]')
+    .usage('[--type simple] [dest]')
     .version(pkg.version)
     .option('--type [type]', `boilerplate type, choices [${keys}]`)
+    .option('--template [template]', `local boilerplate template path`)
+    .option('--force', `force to override if dest exists`)
     .parse(process.argv);
 
-  const type = yield getType(program.type, boilerplate);
   const dest = yield getDest();
-  const templateDir = yield downloadTemplates(boilerplate[type].package);
+
+  let templateDir;
+  if (program.template) {
+    templateDir = path.resolve(process.cwd(), program.template);
+    if (!fs.existsSync(templateDir)) {
+      log(`${templateDir.red} is not exists, exit...`);
+      process.exit(1);
+    }
+    if (!fs.existsSync(path.join(templateDir, 'boilerplate'))) {
+      log(`${templateDir.red} should contain boilerplate folder, exit...`);
+      process.exit(1);
+    }
+    log(`local template dir is ${templateDir.green}`);
+  } else {
+    const type = yield getType(program.type, boilerplate);
+    templateDir = yield downloadTemplates(boilerplate[type].package);
+  }
+
   const src = path.join(templateDir, 'boilerplate');
   const vars = yield getVars(templateDir);
 
   yield copyTo(src, dest, vars);
-  rimraf.sync(templateDir);
-  log(`Clean up ${templateDir}`);
+
+  if (!program.template) {
+    rimraf.sync(templateDir);
+    log(`Clean up ${templateDir}`);
+  }
+
+  log(`Usage:
+    - cd ${dest}
+    - npm install
+    - npm start / npm test
+  `);
+
   process.exit(0);
 }).catch(err => {
   console.error(err.stack);
@@ -70,6 +99,7 @@ function* getType(type, boilerplate) {
   if (type && boilerplate[type]) {
     return type;
   }
+
   const choices = Object.keys(boilerplate).map(key => {
     return {
       name: `${key} - ${boilerplate[key].description}`,
@@ -94,17 +124,24 @@ function* getDest() {
     dest = inputDest || (yield ask('Please enter dest dir (default is current dir): ')) || '.';
     inputDest = null;
     dest = path.resolve(process.cwd(), dest);
-    if (fs.existsSync(dest)) {
+    if (!fs.existsSync(dest)) {
+      log(`${dest.red} is not exists, now create it.`);
+      mkdirp.sync(dest);
+    } else {
       if (!fs.statSync(dest).isDirectory()) {
         log(`${dest.red} already exists as a file`);
         dest = null;
         continue;
       }
       const files = fs.readdirSync(dest).filter(name => name[0] !== '.');
-      if (files.length >= 1) {
-        log(`${dest.red} already exists and not empty: ${JSON.stringify(files)}`);
-        dest = null;
-        continue;
+      if (files.length > 0) {
+        if (program.force) {
+          log(`${dest} already exists and will be override due to --force`.red);
+        } else {
+          log(`${dest.red} already exists and not empty: ${JSON.stringify(files)}`);
+          dest = null;
+          continue;
+        }
       }
     }
 

@@ -30,7 +30,7 @@ $ npm i egg-init -g
 $ egg-init -h
 ```
 
-## 创建 `simeple` 类型的应用
+## 创建 `simple` 类型的应用
 
 ```bash
 $ egg-init --type simple [dest]
@@ -51,6 +51,7 @@ $ egg-init dest
 
 - 新建仓库如 [egg-boilerplate-plugin](https://github.com/eggjs/egg-boilerplate-plugin)
 - boilerplate 目录下存放所有的初始化文件
+- 可以使用 `egg-init --template=PATH` 本地检查生成效果
 - index.js 文件可以声明要替换的变量，在 boilerplate 文件夹中写模板的时候，可以通过 `{{name}}` 占位符的方式进行替换
 
 ```js
@@ -67,7 +68,7 @@ module.exports = {
 };
 ```
 
-- 更新依赖关系，只需要指定你的包名，更新到 [egg-init-config](https://github.com/eggjs/egg-init-config) 这个模块的 pacakge.json 中 `config.boilerplate` 字段
+- 更新依赖关系，只需要指定你的包名，更新到 [egg-init-config](https://github.com/eggjs/egg-init-config) 这个模块的 package.json 中 `config.boilerplate` 字段
 - 发布模板（和配置）到 npm
 
 ## License
