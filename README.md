@@ -30,7 +30,7 @@ $ npm i egg-init -g
 $ egg-init -h
 ```
 
-## Create a `simeple` type application
+## Create a `simple` type application
 
 ```bash
 $ egg-init --type simple [dest]
@@ -51,6 +51,7 @@ We use npm package to manager boilerplate, you can follow this steps:
 
 - Create a new repo like [egg-boilerplate-plugin](https://github.com/eggjs/egg-boilerplate-plugin)
 - Put all files under `boilerplates` dir
+- Use `egg-init --template=PATH` to check
 - `index.js` can define variables which can be useed on template, like `{{name}}`.
 
     ```js
@@ -67,7 +68,7 @@ We use npm package to manager boilerplate, you can follow this steps:
     };
     ```
 
-- Add your package name to [egg-init-config](https://github.com/eggjs/egg-init-config)'s pacakge.json  `config.boilerplate` property
+- Add your package name to [egg-init-config](https://github.com/eggjs/egg-init-config)'s package.json `config.boilerplate` property
 - Publish your package to npm
 
 ## License
