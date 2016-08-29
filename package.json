@@ -1,6 +1,6 @@
 {
   "name": "egg-init",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Init egg app helper tools.",
   "scripts": {
     "ci": "npm run lint && egg-bin cov",
