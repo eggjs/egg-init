@@ -72,7 +72,7 @@ co(function* () {
   log(`Usage:
     - cd ${dest}
     - npm install
-    - npm start / npm test
+    - npm start / npm run dev / npm test
   `);
 
   process.exit(0);
