@@ -16,18 +16,22 @@ const co = require('co');
 const urllib = require('urllib');
 const updater = require('npm-updater');
 const mkdirp = require('mkdirp');
+const publicIp = require('public-ip');
+const geoip = require('geoip-lite');
 const pkg = require('../package.json');
 
 require('colors');
 
-const REGISTRY = 'https://registry.npm.taobao.org';
-const CONFIG_URL = `${REGISTRY}/egg-init-config/latest`;
+let registryUrl;
 
 co(function* () {
+  // get registry url by location
+  registryUrl = yield getRegistryUrl();
+
   // check cli update
   yield updater({
     package: pkg,
-    registry: REGISTRY,
+    registry: registryUrl,
   });
   const boilerplate = yield getBoilerplates();
   const keys = Object.keys(boilerplate);
@@ -36,8 +40,8 @@ co(function* () {
     .usage('[--type simple] [dest]')
     .version(pkg.version)
     .option('--type [type]', `boilerplate type, choices [${keys}]`)
-    .option('--template [template]', `local boilerplate template path`)
-    .option('--force', `force to override if dest exists`)
+    .option('--template [template]', 'local boilerplate template path')
+    .option('--force', 'force to override if dest exists')
     .parse(process.argv);
 
   const dest = yield getDest();
@@ -84,7 +88,7 @@ co(function* () {
 function* getBoilerplates() {
   let pkg;
   try {
-    const res = yield urllib.request(CONFIG_URL, {
+    const res = yield urllib.request(`${registryUrl}/egg-init-config/latest`, {
       dataType: 'json',
       followRedirect: true,
     });
@@ -178,7 +182,7 @@ function* getVars(questionFile) {
 }
 
 function* downloadTemplates(module) {
-  const url = `${REGISTRY}/${module}/latest`;
+  const url = `${registryUrl}/${module}/latest`;
   const result = yield urllib.request(url, {
     dataType: 'json',
   });
@@ -245,6 +249,20 @@ function copyTo(src, dest, vars) {
       .on('error', callback)
       .resume();
   };
+}
+
+function* getRegistryUrl() {
+  let url = 'https://registry.npmjs.org';
+  try {
+    const ip = yield publicIp.v4();
+    const geo = geoip.lookup(ip);
+    if (geo.country === 'CN') {
+      url = 'https://registry.npm.taobao.org';
+    }
+  } catch (err) {
+    log(`use fallback registry url: ${url}`.red);
+  }
+  return url;
 }
 
 function simplifyFilename(filename) {
