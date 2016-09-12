@@ -1,6 +1,6 @@
 {
   "name": "egg-init",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Init egg app helper tools.",
   "scripts": {
     "lint": "eslint bin lib test",
