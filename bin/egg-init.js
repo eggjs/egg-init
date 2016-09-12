@@ -16,8 +16,7 @@ const co = require('co');
 const urllib = require('urllib');
 const updater = require('npm-updater');
 const mkdirp = require('mkdirp');
-const publicIp = require('public-ip');
-const geoip = require('geoip-lite');
+const execSync = require('child_process').execSync;
 const pkg = require('../package.json');
 
 require('colors');
@@ -254,12 +253,17 @@ function copyTo(src, dest, vars) {
 function* getRegistryUrl() {
   let url = 'https://registry.npmjs.org';
   try {
-    const ip = yield publicIp.v4();
-    const geo = geoip.lookup(ip);
-    if (geo.country === 'CN') {
+    // check ip, auto choose
+    const result = yield urllib.request('http://ip.taobao.com/service/getIpInfo.php?ip=myip', { dataType: 'json' });
+    const ipInfo = result.data && result.data.data;
+    if (ipInfo && ipInfo.country_id === 'CN') {
       url = 'https://registry.npm.taobao.org';
+      log(`ip: ${ipInfo.ip}, china, use: ${url.green}`);
     }
   } catch (err) {
+    // support .npmrc
+    const fallbackUrl = execSync('npm config get registry', { encoding: 'utf8' });
+    url = fallbackUrl.trim().replace(/\/$/, '');
     log(`use fallback registry url: ${url}`.red);
   }
   return url;
