@@ -64,7 +64,6 @@ co(function* () {
 
   const src = path.join(templateDir, 'boilerplate');
   const vars = yield getVars(templateDir);
-
   yield copyTo(src, dest, vars);
 
   if (!program.template) {
@@ -110,7 +109,7 @@ function* getType(type, boilerplate) {
     };
   });
 
-  const answers = yield prompt({
+  const answers = yield inquirer.prompt({
     name: 'type',
     type: 'list',
     message: 'Please select a boilerplate type',
@@ -120,37 +119,40 @@ function* getType(type, boilerplate) {
 }
 
 function* getDest() {
-  let inputDest = program.args[0];
-  let dest = null;
-
-  while (!dest) {
-    dest = inputDest || (yield ask('Please enter dest dir (default is current dir): ')) || '.';
-    inputDest = null;
-    dest = path.resolve(process.cwd(), dest);
-    if (!fs.existsSync(dest)) {
-      log(`${dest.red} is not exists, now create it.`);
-      mkdirp.sync(dest);
-    } else {
-      if (!fs.statSync(dest).isDirectory()) {
-        log(`${dest.red} already exists as a file`);
-        dest = null;
-        continue;
+  const inputDest = program.args[0];
+  const answer = yield inquirer.prompt({
+    name: 'dest',
+    message: 'Please enter dest dir: ',
+    default: inputDest || '.',
+    filter: dest => path.resolve(process.cwd(), dest),
+    validate: dest => {
+      // create dir if not exist
+      if (!fs.existsSync(dest)) {
+        log(`${dest.red} is not exists, now create it.`);
+        mkdirp.sync(dest);
+        return true;
       }
+
+      // not a directory
+      if (!fs.statSync(dest).isDirectory()) {
+        return `${dest.red} already exists as a file`;
+      }
+
+      // check if directory empty
       const files = fs.readdirSync(dest).filter(name => name[0] !== '.');
       if (files.length > 0) {
         if (program.force) {
           log(`${dest} already exists and will be override due to --force`.red);
-        } else {
-          log(`${dest.red} already exists and not empty: ${JSON.stringify(files)}`);
-          dest = null;
-          continue;
+          return true;
         }
+        return `${dest.red} already exists and not empty: ${JSON.stringify(files)}`;
       }
-    }
+      return true;
+    },
+  });
 
-    log(`dest dir is ${dest.green}`);
-    return dest;
-  }
+  log(`dest dir is ${answer.dest.green}`);
+  return answer.dest;
 }
 
 function* getVars(questionFile) {
@@ -162,22 +164,19 @@ function* getVars(questionFile) {
   }
 
   const keys = Object.keys(questions);
-  const vars = {};
+
   if (keys.length) {
     log('Initing boilerplate config...');
   }
-  for (const key of keys) {
-    const question = questions[key] || {};
-    let desc = question.desc;
-    if (question.default) {
-      desc = `${desc}(${question.default})`;
-    }
-    desc += ': ';
-    let value = yield ask(desc);
-    value = value || question.default || '';
-    vars[key] = value;
-  }
-  return vars;
+  return yield inquirer.prompt(keys.map(key => {
+    const question = questions[key];
+    return {
+      type: 'input',
+      name: key,
+      message: question.desc,
+      default: question.default,
+    };
+  }));
 }
 
 function* downloadTemplates(module) {
@@ -277,24 +276,6 @@ function log() {
   const args = Array.prototype.slice.call(arguments);
   args[0] = '[egg-init] '.blue + args[0];
   console.log.apply(console, args);
-}
-
-function prompt(question) {
-  return cb => {
-    inquirer.prompt([ question ], answers => {
-      cb(null, answers);
-    });
-  };
-}
-
-function ask(desc) {
-  return cb => {
-    process.stdout.write(desc.grey);
-    process.stdin.setEncoding('utf8');
-    process.stdin.once('data', data => {
-      cb(null, data.trim());
-    }).resume();
-  };
 }
 
 function replace(content, vars) {

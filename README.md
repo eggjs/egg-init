@@ -50,7 +50,7 @@ $ egg-init dest
 We use npm package to manager boilerplate, you can follow this steps:
 
 - Create a new repo like [egg-boilerplate-plugin](https://github.com/eggjs/egg-boilerplate-plugin)
-- Put all files under `boilerplates` dir
+- Put all files under `boilerplate` dir
 - Use `egg-init --template=PATH` to check
 - `index.js` can define variables which can be useed on template, like `{{name}}`.
 
