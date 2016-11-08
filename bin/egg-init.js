@@ -16,7 +16,7 @@ const co = require('co');
 const urllib = require('urllib');
 const updater = require('npm-updater');
 const mkdirp = require('mkdirp');
-const execSync = require('child_process').execSync;
+const homedir = require('node-homedir');
 const pkg = require('../package.json');
 
 require('colors');
@@ -25,7 +25,7 @@ let registryUrl;
 
 co(function* () {
   // get registry url by location
-  registryUrl = yield getRegistryUrl();
+  registryUrl = getRegistryUrl();
 
   // check cli update
   yield updater({
@@ -249,21 +249,11 @@ function copyTo(src, dest, vars) {
   };
 }
 
-function* getRegistryUrl() {
-  let url = 'https://registry.npmjs.org';
-  try {
-    // check ip, auto choose
-    const result = yield urllib.request('http://ip.taobao.com/service/getIpInfo.php?ip=myip', { dataType: 'json' });
-    const ipInfo = result.data && result.data.data;
-    if (ipInfo && ipInfo.country_id === 'CN') {
-      url = 'https://registry.npm.taobao.org';
-      log(`ip: ${ipInfo.ip}, china, use: ${url.green}`);
-    }
-  } catch (err) {
-    // support .npmrc
-    const fallbackUrl = execSync('npm config get registry', { encoding: 'utf8' });
-    url = fallbackUrl.trim().replace(/\/$/, '');
-    log(`use fallback registry url: ${url}`.red);
+function getRegistryUrl() {
+  const home = homedir();
+  let url = process.env.npm_registry || process.env.npm_config_registry || 'https://registry.cnpmjs.org';
+  if (fs.existsSync(path.join(home, '.cnpmrc')) || fs.existsSync(path.join(home, '.tnpmrc'))) {
+    url = 'https://registry.npm.taobao.org';
   }
   return url;
 }
