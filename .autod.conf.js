@@ -12,5 +12,6 @@ module.exports = {
     'egg-bin',
     'eslint',
     'eslint-config-egg'
-  ]
+  ],
+  registry: 'https://r.cnpmjs.org',
 };
