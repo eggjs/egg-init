@@ -15,7 +15,9 @@
     "egg-init": "bin/egg-init.js"
   },
   "files": [
-    "bin"
+    "bin",
+    "lib",
+    "index.js"
   ],
   "dependencies": {
     "co": "^4.6.0",
