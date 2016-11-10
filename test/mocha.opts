@@ -1,0 +1,5 @@
+-r intelli-espower-loader
+-r ./node_modules/egg-bin/node_modules/thunk-mocha
+-t 30000
+--recursive
+-g ^test\/.*?\.test\.js\s+.*

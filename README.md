@@ -63,11 +63,12 @@ We use npm package to manager boilerplate, you can follow this steps:
         desc: 'my best plugin',
       },
       author: {
-        desc: 'fengmk2',
+        desc: 'author',
+        default: 'eggjs team'
       },
     };
     ```
-
+- Write unit test, see `npm scripts` at [egg-boilerplate-simple](https://github.com/eggjs/egg-boilerplate-simple/blob/master/package.json#L5)
 - Add your package name to [egg-init-config](https://github.com/eggjs/egg-init-config)'s package.json `config.boilerplate` property
 - Publish your package to npm
 
