@@ -2,7 +2,6 @@
 
 const fs = require('fs');
 const path = require('path');
-// const coffee = require('coffee');
 const rimraf = require('rimraf');
 const assert = require('power-assert');
 const Helper = require('./helper');
@@ -15,13 +14,13 @@ describe('test/init.test.js', () => {
   let command;
   let helper;
   before(() => {
-    rimraf.sync(tmp)
+    rimraf.sync(tmp);
     command = new Command();
     helper = new Helper(command);
   });
 
   afterEach(() => {
-    rimraf.sync(tmp)
+    rimraf.sync(tmp);
     helper.restore();
   });
 
@@ -38,7 +37,7 @@ describe('test/init.test.js', () => {
     assert(/# simple-app/.test(content));
   });
 
-   it('should prompt', function* () {
+  it('should prompt', function* () {
     helper.mock([ helper.KEY_DOWN, [ 'test', 'this is xxx', 'TZ' ]]);
     yield command.run(tmp, [ 'prompt-app', '--force' ]);
 
@@ -49,5 +48,12 @@ describe('test/init.test.js', () => {
 
     const content = fs.readFileSync(path.join(command.targetDir, 'README.md'), 'utf-8');
     assert(/# test/.test(content));
+  });
+
+  it('.replaceTemplate', () => {
+    assert(command.replaceTemplate('hi, {{ user }}', { user: 'egg' }) === 'hi, egg');
+    assert(command.replaceTemplate('hi, {{ user }}\n{{type}} {{user}}', { user: 'egg', type: 'init' }) === 'hi, egg\ninit egg');
+    assert(command.replaceTemplate('hi, {{ user }}', {}) === 'hi, {{ user }}');
+    assert(command.replaceTemplate('hi, \\{{ user }}', { user: 'egg' }) === 'hi, {{ user }}');
   });
 });
