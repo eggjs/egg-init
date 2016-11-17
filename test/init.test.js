@@ -32,6 +32,7 @@ describe('test/init.test.js', () => {
     assert(pkgInfo.boilerplate.name === 'egg-boilerplate-simple-test');
     assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
     assert(fs.existsSync(path.join(command.targetDir, '.eslintrc')));
+    assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
 
     const content = fs.readFileSync(path.join(command.targetDir, 'README.md'), 'utf-8');
     assert(/# simple-app/.test(content));
