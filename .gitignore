@@ -26,3 +26,5 @@ boilerplate-*/logs
 boilerplate-*/dist
 .DS_Store
 tmp
+
+.idea/

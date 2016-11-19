@@ -22,10 +22,10 @@
   "dependencies": {
     "co": "^4.6.0",
     "colors": "^1.1.2",
-    "egg-init-config": "^1.1.0",
+    "egg-init-config": "^1.2.0",
     "glob": "^7.1.1",
     "group-object": "^0.1.1",
-    "inquirer": "^1.2.2",
+    "inquirer": "^1.2.3",
     "is-type-of": "^1.0.0",
     "mem-fs": "^1.1.3",
     "mem-fs-editor": "^2.3.0",
@@ -35,14 +35,18 @@
     "rimraf": "^2.5.4",
     "tar": "^2.2.1",
     "urllib": "^2.17.0",
-    "yargs": "^6.3.0"
+    "yargs": "^6.4.0"
   },
   "devDependencies": {
     "autod": "^2.7.1",
     "coffee": "^3.3.0",
     "egg-bin": "^1.7.0",
-    "eslint": "^3.9.1",
-    "eslint-config-egg": "^3.2.0"
+    "egg-ci": "^1.1.0",
+    "eslint": "^3.10.2",
+    "eslint-config-egg": "^3.2.0",
+    "intelli-espower-loader": "^1.0.1",
+    "power-assert": "^1.4.2",
+    "webstorm-disable-index": "^1.0.11"
   },
   "homepage": "https://github.com/eggjs/egg-init",
   "repository": {
@@ -54,6 +58,9 @@
     "egg",
     "egg-init"
   ],
+  "ci": {
+    "version": "4, 6, 7"
+  },
   "engines": {
     "node": ">=4.0.0"
   },

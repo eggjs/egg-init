@@ -52,7 +52,7 @@ We use npm package to manager boilerplate, you can follow this steps:
 - Create a new repo like [egg-boilerplate-plugin](https://github.com/eggjs/egg-boilerplate-plugin)
 - Put all files under `boilerplate` dir
 - Use `egg-init --template=PATH` to check
-- `index.js` can define variables which can be useed on template, like `{{name}}`.
+- `index.js` can define variables which can be useed on template, like `{{name}}`, but `\{{name}}` will ignore.
 
     ```js
     module.exports = {
@@ -63,11 +63,12 @@ We use npm package to manager boilerplate, you can follow this steps:
         desc: 'my best plugin',
       },
       author: {
-        desc: 'fengmk2',
+        desc: 'author',
+        default: 'eggjs team'
       },
     };
     ```
-
+- Write unit test, see `npm scripts` at [egg-boilerplate-simple](https://github.com/eggjs/egg-boilerplate-simple/blob/master/package.json#L5)
 - Add your package name to [egg-init-config](https://github.com/eggjs/egg-init-config)'s package.json `config.boilerplate` property
 - Publish your package to npm
 
