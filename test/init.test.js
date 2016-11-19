@@ -2,29 +2,59 @@
 
 const fs = require('fs');
 const path = require('path');
-const coffee = require('coffee');
 const rimraf = require('rimraf');
-const assert = require('assert');
+const assert = require('power-assert');
+const Helper = require('./helper');
 
-const eggInitBin = path.join(__dirname, '../bin/egg-init.js');
-const tmp = path.join(__dirname, '../tmp');
+const tmp = path.join(__dirname, '../.tmp');
+
+const Command = require('..');
 
 describe('test/init.test.js', () => {
+  let command;
+  let helper;
+  before(() => {
+    rimraf.sync(tmp);
+    command = new Command();
+    helper = new Helper(command);
+  });
 
   afterEach(() => {
     rimraf.sync(tmp);
+    helper.restore();
   });
 
-  it.skip('should work with args --type', done => {
-    coffee.fork(eggInitBin, [ '--type', 'plugin', 'tmp' ])
-    .expect('stdout', /\[egg-init\] Download/)
-    .expect('code', 0)
-    .end((err, res) => {
-      console.log(res.stdout);
-      assert(!err, err && err.message);
-      assert(fs.existsSync(path.join(tmp, 'package.json')));
-      done();
-    });
+  it('should work', function* () {
+    const boilerplatePath = path.join(__dirname, 'fixtures/simple-test');
+    yield command.run(tmp, [ 'simple-app', '--template=' + boilerplatePath, '--silent' ]);
+
+    const pkgInfo = require(path.join(command.targetDir, 'package.json'));
+    assert(pkgInfo.boilerplate.name === 'egg-boilerplate-simple-test');
+    assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
+    assert(fs.existsSync(path.join(command.targetDir, '.eslintrc')));
+    assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
+
+    const content = fs.readFileSync(path.join(command.targetDir, 'README.md'), 'utf-8');
+    assert(/# simple-app/.test(content));
   });
 
+  it('should prompt', function* () {
+    helper.mock([ helper.KEY_DOWN, [ 'test', 'this is xxx', 'TZ' ]]);
+    yield command.run(tmp, [ 'prompt-app', '--force' ]);
+
+    const pkgInfo = require(path.join(command.targetDir, 'package.json'));
+    assert(pkgInfo.boilerplate.name === 'egg-boilerplate-empty');
+    assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
+    assert(fs.existsSync(path.join(command.targetDir, '.eslintrc')));
+
+    const content = fs.readFileSync(path.join(command.targetDir, 'README.md'), 'utf-8');
+    assert(/# test/.test(content));
+  });
+
+  it('.replaceTemplate', () => {
+    assert(command.replaceTemplate('hi, {{ user }}', { user: 'egg' }) === 'hi, egg');
+    assert(command.replaceTemplate('hi, {{ user }}\n{{type}} {{user}}', { user: 'egg', type: 'init' }) === 'hi, egg\ninit egg');
+    assert(command.replaceTemplate('hi, {{ user }}', {}) === 'hi, {{ user }}');
+    assert(command.replaceTemplate('hi, \\{{ user }}', { user: 'egg' }) === 'hi, {{ user }}');
+  });
 });
