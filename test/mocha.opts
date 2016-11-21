@@ -1,5 +1,0 @@
--r intelli-espower-loader
--r ./node_modules/egg-bin/node_modules/thunk-mocha
--t 2000000
---recursive
--g ^test\/.*?\.test\.js\s+.*
