@@ -1,4 +1,9 @@
 
+1.5.1 / 2016-11-28
+==================
+
+  * fix: error message when boilerplate config missing (#18)
+
 1.5.0 / 2016-11-21
 ==================
 
