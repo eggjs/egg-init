@@ -28,8 +28,6 @@ describe('test/init.test.js', () => {
     const boilerplatePath = path.join(__dirname, 'fixtures/simple-test');
     yield command.run(tmp, [ 'simple-app', '--template=' + boilerplatePath, '--silent' ]);
 
-    const pkgInfo = require(path.join(command.targetDir, 'package.json'));
-    assert(pkgInfo.boilerplate.name === 'egg-boilerplate-simple-test');
     assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
     assert(fs.existsSync(path.join(command.targetDir, '.eslintrc')));
     assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
@@ -44,10 +42,9 @@ describe('test/init.test.js', () => {
     helper.mock([ helper.KEY_DOWN, [ 'test', 'this is xxx', 'TZ' ]]);
     yield command.run(tmp, [ 'prompt-app', '--force' ]);
 
-    const pkgInfo = require(path.join(command.targetDir, 'package.json'));
-    assert(pkgInfo.boilerplate.name === 'egg-boilerplate-empty');
     assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
     assert(fs.existsSync(path.join(command.targetDir, '.eslintrc')));
+    assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
 
     const content = fs.readFileSync(path.join(command.targetDir, 'README.md'), 'utf-8');
     assert(/# test/.test(content));
