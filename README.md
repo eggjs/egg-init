@@ -45,6 +45,23 @@ $ egg-init dest
   plugin - egg plugin
 ```
 
+## Command
+
+```
+Usage: egg-init [dir] --type=simple
+
+Options:
+  --type          boilerplate type                                                [string]
+  --dir           target directory                                                [string]
+  --force, -f     force to override directory                                     [boolean]
+  --template      local path to boilerplate                                       [string]
+  --package       boilerplate package name                                        [string]
+  --registry, -r  npm registry, support china/npm/custom, default to auto detect  [string]
+  --silent        don't ask, just use default value                               [boolean]
+  --version       Show version number                                             [boolean]
+  -h, --help      Show help                                                       [boolean]
+```
+
 ## Custom a boilerplate
 
 We use npm package to manager boilerplate, you can follow this steps:

@@ -45,6 +45,23 @@ $ egg-init dest
   plugin - egg plugin
 ```
 
+## 支持的参数
+
+```
+Usage: egg-init [dir] --type=simple
+
+Options:
+  --type          boilerplate type                                                [string]
+  --dir           target directory                                                [string]
+  --force, -f     force to override directory                                     [boolean]
+  --template      local path to boilerplate                                       [string]
+  --package       boilerplate package name                                        [string]
+  --registry, -r  npm registry, support china/npm/custom, default to auto detect  [string]
+  --silent        don't ask, just use default value                               [boolean]
+  --version       Show version number                                             [boolean]
+  -h, --help      Show help                                                       [boolean]
+```
+
 ## 自定义模板
 
 自定义模板采用 npm 包的形式管理
