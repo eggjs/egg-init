@@ -1,4 +1,9 @@
 
+1.8.1 / 2017-03-01
+==================
+
+  * feat: more friendly warning when fetch npm info got error (#23)
+
 1.8.0 / 2017-02-26
 ==================
 
