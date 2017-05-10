@@ -74,7 +74,16 @@ We use npm package to manager boilerplate, you can follow this steps:
     ```js
     module.exports = {
       name: {
+        desc: 'package-name',
+      },
+      pluginName: {
         desc: 'plugin-name',
+        default(vars) {
+          return vars.name;
+        },
+        filter(v) {
+          return 'egg-' + v;
+        },
       },
       description: {
         desc: 'my best plugin',
