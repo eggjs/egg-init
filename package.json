@@ -39,7 +39,7 @@
   "devDependencies": {
     "autod": "^2.8.0",
     "coffee": "^3.3.0",
-    "egg-bin": "^3.3.2",
+    "egg-bin": "^1.0.0",
     "egg-ci": "^1.1.0",
     "eslint": "^3.19.0",
     "eslint-config-egg": "^4.1.0",
