@@ -2,6 +2,10 @@
 
 {{description}}
 
+{{defaultFn}}
+
+{{filterFn}}
+
 ## QuickStart
 
 ### Development
