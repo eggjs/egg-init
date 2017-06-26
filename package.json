@@ -16,8 +16,7 @@
   },
   "files": [
     "bin",
-    "lib",
-    "index.js"
+    "lib"
   ],
   "dependencies": {
     "co": "^4.6.0",
