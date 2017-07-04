@@ -5,6 +5,7 @@ const path = require('path');
 const rimraf = require('mz-modules/rimraf');
 const assert = require('power-assert');
 const Helper = require('./helper');
+const Mode = require('stat-mode');
 
 const tmp = path.join(__dirname, '../.tmp');
 
@@ -35,6 +36,10 @@ describe('test/init.test.js', () => {
     assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
     assert(fs.existsSync(path.join(command.targetDir, 'simple-app')));
     assert(fs.existsSync(path.join(command.targetDir, 'test', 'simple-app.test.js')));
+
+    const binStat = fs.statSync(path.join(command.targetDir, 'bin/my-bin.js'));
+    const mode = new Mode(binStat);
+    assert(mode.toString() === '-rwxr-xr-x');
 
     const content = fs.readFileSync(path.join(command.targetDir, 'README.md'), 'utf-8');
     assert(/# simple-app/.test(content));
