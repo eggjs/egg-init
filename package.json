@@ -1,6 +1,6 @@
 {
   "name": "egg-init",
-  "version": "1.10.0",
+  "version": "1.10.1",
   "description": "Init egg app helper tools.",
   "main": "lib/init_command.js",
   "scripts": {
