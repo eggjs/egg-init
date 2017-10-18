@@ -1,4 +1,10 @@
 
+1.12.0 / 2017-10-18
+==================
+
+**features**
+  * [[`8c8930e`](http://github.com/eggjs/egg-init/commit/8c8930eff649aa3b0f414c724c31d3cbdf2a30a2)] - feat: change default register to npm (#33) (TZ | 天猪 <<atian25@qq.com>>)
+
 1.11.0 / 2017-07-27
 ==================
 
