@@ -38,6 +38,9 @@ describe('test/init.test.js', () => {
 
     const content = fs.readFileSync(path.join(command.targetDir, 'README.md'), 'utf-8');
     assert(/# simple-app/.test(content));
+
+    const contentPNG = fs.readFileSync(path.join(command.targetDir, 'favicon.png'));
+    assert(contentPNG.toString('hex', 0, 8) === '89504e470d0a1a0a');
   });
 
   it('should work with prompt', function* () {
