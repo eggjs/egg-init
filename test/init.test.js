@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const rimraf = require('mz-modules/rimraf');
-const assert = require('power-assert');
+const assert = require('assert');
 const Helper = require('./helper');
 
 const tmp = path.join(__dirname, '../.tmp');
