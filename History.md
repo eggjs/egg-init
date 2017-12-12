@@ -1,4 +1,11 @@
 
+1.13.0 / 2017-12-12
+===================
+
+**features**
+  * [[`72f7cde`](https://github.com/eggjs/egg-init/commit/72f7cde15b1a7ebf04d8bd93e7f4fe5fc56e9d37)] - feat: only processTemplate with text file (#35) (TZ | 天猪 <<atian25@qq.com>>)
+  * [[`d98cff6`](https://github.com/eggjs/egg-init/commit/d98cff6be7a1fc13c51bf8539ad138b1f35f0d53)] - feat: support http_proxy (#36) (TZ | 天猪 <<atian25@qq.com>>)
+
 1.12.0 / 2017-10-18
 ==================
 
