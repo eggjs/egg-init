@@ -7,6 +7,10 @@ module.exports = {
   exclude: [
     'test/fixtures',
   ],
+  semver: [
+    'egg-bin@1',
+    'inquirer@3',
+  ],
   dep: [
     'egg-init-config',
   ],
