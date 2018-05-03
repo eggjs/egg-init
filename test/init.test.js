@@ -32,6 +32,7 @@ describe('test/init.test.js', () => {
 
     assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
     assert(fs.existsSync(path.join(command.targetDir, '.eslintrc')));
+    assert(fs.existsSync(path.join(command.targetDir, '.npmignore')));
     assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
     assert(fs.existsSync(path.join(command.targetDir, 'simple-app')));
     assert(fs.existsSync(path.join(command.targetDir, 'test', 'simple-app.test.js')));
@@ -61,11 +62,10 @@ describe('test/init.test.js', () => {
     yield command.run(tmp, [ 'prompt-app', '--force' ]);
 
     assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
-    assert(fs.existsSync(path.join(command.targetDir, '.eslintrc')));
     assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
 
     const content = fs.readFileSync(path.join(command.targetDir, 'README.md'), 'utf-8');
-    assert(/# test/.test(content));
+    assert(/QuickStart/.test(content));
   });
 
   it('.replaceTemplate', () => {
