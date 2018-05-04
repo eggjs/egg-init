@@ -1,4 +1,10 @@
 
+1.14.0 / 2018-05-04
+==================
+
+**features**
+  * [[`ca21ba1`](http://github.com/eggjs/egg-init/commit/ca21ba12dcc4a558064d57b6fe8ff6cef92aa903)] - feat: add npmignore (#39) (Chaos（拾锋） <<edokeh@163.com>>)
+
 1.13.0 / 2017-12-12
 ===================
 
