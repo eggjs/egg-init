@@ -58,7 +58,7 @@ describe('test/init.test.js', () => {
   });
 
   it('should prompt', function* () {
-    helper.mock([ helper.KEY_DOWN, [ 'test', 'this is xxx', 'TZ' ]]);
+    helper.mock([ helper.KEY_DOWN, [ 'test', 'this is xxx', 'TZ', helper.KEY_ENTER ]]);
     yield command.run(tmp, [ 'prompt-app', '--force' ]);
 
     assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));

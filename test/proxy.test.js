@@ -48,7 +48,7 @@ describe('test/proxy.test.js', () => {
   it('should work', function* () {
     mm(process.env, 'http_proxy', 'http://127.0.0.1:' + proxyPort);
 
-    helper.mock([ helper.KEY_DOWN, [ 'test', 'this is xxx', 'TZ' ]]);
+    helper.mock([ helper.KEY_DOWN, [ 'test', 'this is xxx', 'TZ', helper.KEY_ENTER ]]);
     yield command.run(tmp, [ 'prompt-app', '--force' ]);
 
     assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
