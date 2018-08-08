@@ -1,4 +1,10 @@
 
+1.14.1 / 2018-08-08
+==================
+
+**fixes**
+  * [[`c7015a3`](http://github.com/eggjs/egg-init/commit/c7015a3c3ca11412de0ba3c72e7744a464bdf8ae)] - fix: package.json to reduce vulnerabilities (#41) (Snyk bot <<snyk-bot@snyk.io>>)
+
 1.14.0 / 2018-05-04
 ==================
 
