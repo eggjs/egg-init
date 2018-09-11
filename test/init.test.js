@@ -65,7 +65,8 @@ describe('test/init.test.js', () => {
     assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
 
     const content = fs.readFileSync(path.join(command.targetDir, 'README.md'), 'utf-8');
-    assert(/QuickStart/.test(content));
+    console.log(content, '====');
+    assert(/Development/.test(content));
   });
 
   it('.replaceTemplate', () => {

@@ -55,6 +55,6 @@ describe('test/proxy.test.js', () => {
     assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
 
     const content = fs.readFileSync(path.join(command.targetDir, 'README.md'), 'utf-8');
-    assert(/QuickStart/.test(content));
+    assert(/Development/.test(content));
   });
 });
