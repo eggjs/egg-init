@@ -8,14 +8,16 @@ const Helper = require('./helper');
 
 const tmp = path.join(__dirname, '../.tmp');
 
-const Command = require('..');
+const Command = require('../lib/init_command');
 
-describe('test/init.test.js', () => {
+describe('test/category.test', () => {
   let command;
   let helper;
   before(function* () {
     yield rimraf(tmp);
-    command = new Command();
+    command = new Command({
+      configName: 'egg-init-config-category',
+    });
     helper = new Helper(command);
   });
 
