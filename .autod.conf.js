@@ -23,6 +23,7 @@ module.exports = {
     'eslint@4',
     'eslint-config-egg@6',
     'mem-fs-editor@4',
+    'yargs@11',
   ],
   registry: 'https://r.cnpmjs.org',
 };

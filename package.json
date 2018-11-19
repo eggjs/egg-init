@@ -35,7 +35,7 @@
     "npm-updater": "^3.0.3",
     "proxy-agent": "^3.0.3",
     "urllib": "^2.31.2",
-    "yargs": "^12.0.4"
+    "yargs": "^11.1.0"
   },
   "devDependencies": {
     "autod": "^3.0.1",

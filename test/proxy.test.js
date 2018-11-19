@@ -40,8 +40,7 @@ describe('test/proxy.test.js', () => {
     helper.restore();
   });
 
-  after(done => {
-    proxyServer.once('close', function() { done(); });
+  after(() => {
     proxyServer.close();
   });
 
