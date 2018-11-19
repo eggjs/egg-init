@@ -20,7 +20,7 @@ module.exports = {
   semver: [
     'egg-bin@1',
     'inquirer@3',
-    'eslint@3',
+    'eslint@4',
   ],
   registry: 'https://r.cnpmjs.org',
 };
