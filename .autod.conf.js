@@ -24,6 +24,7 @@ module.exports = {
     'eslint-config-egg@6',
     'mem-fs-editor@4',
     'yargs@11',
+    'proxy-agent@2',
   ],
   registry: 'https://r.cnpmjs.org',
 };
