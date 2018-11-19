@@ -7,10 +7,6 @@ module.exports = {
   exclude: [
     'test/fixtures',
   ],
-  semver: [
-    'egg-bin@1',
-    'inquirer@3',
-  ],
   dep: [
     'egg-init-config',
   ],
@@ -20,6 +16,11 @@ module.exports = {
     'egg-ci',
     'eslint',
     'eslint-config-egg'
+  ],
+  semver: [
+    'egg-bin@1',
+    'inquirer@3',
+    'eslint@3',
   ],
   registry: 'https://r.cnpmjs.org',
 };
