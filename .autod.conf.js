@@ -21,6 +21,7 @@ module.exports = {
     'egg-bin@1',
     'inquirer@3',
     'eslint@4',
+    'eslint-config-egg@6'
   ],
   registry: 'https://r.cnpmjs.org',
 };
