@@ -4,7 +4,6 @@ node_js:
   - '4'
   - '6'
   - '8'
-  - '10'
 install:
   - npm i npminstall && npminstall
 script:
