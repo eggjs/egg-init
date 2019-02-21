@@ -10,3 +10,5 @@ run
 .idea
 .DS_Store
 .tmp
+.vscode
+yarn.lock

@@ -74,4 +74,15 @@ describe('test/init.test.js', () => {
     assert(command.replaceTemplate('hi, {{ user }}', {}) === 'hi, {{ user }}');
     assert(command.replaceTemplate('hi, \\{{ user }}', { user: 'egg' }) === 'hi, {{ user }}');
   });
+
+  it('should works with remote boilerplate', function* () {
+    yield command.run(tmp, [ 'simple-app', '--type=simple', '--silent' ]);
+
+    assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
+    assert(fs.existsSync(path.join(command.targetDir, '.eslintrc')));
+    assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
+    assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
+    assert(fs.existsSync(path.join(command.targetDir, 'test/app/controller/home.test.js')));
+    assert(fs.existsSync(path.join(command.targetDir, 'app/controller/home.js')));
+  });
 });
