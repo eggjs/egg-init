@@ -61,7 +61,7 @@ describe('test/category.test', () => {
 
   it('should prompt', function* () {
     helper.mock([ helper.KEY_DOWN, [ 'test', 'this is xxx', 'TZ', helper.KEY_ENTER ]]);
-    yield command.run(tmp, [ 'prompt-app', '--force' ]);
+    yield command.run(tmp, [ 'prompt-app', '--force', '--registry=china' ]);
 
     assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
     assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
