@@ -59,7 +59,7 @@ describe('test/init.test.js', () => {
 
   it('should prompt', function* () {
     helper.mock([ helper.KEY_DOWN, [ 'test', 'this is xxx', 'TZ', helper.KEY_ENTER ]]);
-    yield command.run(tmp, [ 'prompt-app', '--force', '--registry=china' ]);
+    yield command.run(tmp, [ 'prompt-app', '--force' ]);
 
     assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
     assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
@@ -76,7 +76,7 @@ describe('test/init.test.js', () => {
   });
 
   it('should works with remote boilerplate', function* () {
-    yield command.run(tmp, [ 'simple-app', '--type=simple', '--silent', '--registry=npm' ]);
+    yield command.run(tmp, [ 'simple-app', '--type=simple', '--silent' ]);
 
     assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
     assert(fs.existsSync(path.join(command.targetDir, '.eslintrc')));
