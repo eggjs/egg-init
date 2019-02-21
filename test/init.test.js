@@ -82,10 +82,7 @@ describe('test/init.test.js', () => {
     assert(fs.existsSync(path.join(command.targetDir, '.eslintrc')));
     assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
     assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
-    assert(fs.existsSync(path.join(command.targetDir, 'test', 'app/controller/home.test.js')));
-    assert(fs.existsSync(path.join(command.targetDir, 'test', 'app/controller/home.js')));
-
-    const content = fs.readFileSync(path.join(command.targetDir, 'README.md'), 'utf-8');
-    assert(/# simple-app/.test(content));
+    assert(fs.existsSync(path.join(command.targetDir, 'test/app/controller/home.test.js')));
+    assert(fs.existsSync(path.join(command.targetDir, 'app/controller/home.js')));
   });
 });
