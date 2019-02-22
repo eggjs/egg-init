@@ -1,6 +1,6 @@
 {
   "name": "egg-init",
-  "version": "1.15.0",
+  "version": "1.15.1",
   "description": "Init egg app helper tools.",
   "main": "lib/init_command.js",
   "scripts": {
@@ -57,10 +57,10 @@
     "egg-init"
   ],
   "ci": {
-    "version": "4, 6, 8"
+    "version": "6, 8, 10"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=6.0.0"
   },
   "author": "fengmk2 <fengmk2@gmail.com> (http://fengmk2.com)"
 }

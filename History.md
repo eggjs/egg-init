@@ -1,4 +1,13 @@
 
+1.15.1 / 2019-02-22
+==================
+
+**fixes**
+  * [[`318fc69`](http://github.com/eggjs/egg-init/commit/318fc695d6ec0f7df092b8d56e1cfc04b7bef793)] - fix: mem fs bugs in windows  (#48) (吖猩 <<whxaxes@qq.com>>)
+
+**others**
+  * [[`0704648`](http://github.com/eggjs/egg-init/commit/070464810136691c615d6c5a8862facbf68e768f)] - deps: upgrade dependencies (#46) (Haoliang Gao <<sakura9515@gmail.com>>)
+
 1.15.0 / 2018-09-12
 ===================
 
