@@ -1,4 +1,10 @@
 
+1.16.0 / 2019-03-28
+==================
+
+**features**
+  * [[`a1512e4`](http://github.com/eggjs/egg-init/commit/a1512e47eef8a7f4af8561946a5bb486eb24e2f0)] - feat: add deprecate message (#49) (TZ | 天猪 <<atian25@qq.com>>)
+
 1.15.1 / 2019-02-22
 ==================
 
