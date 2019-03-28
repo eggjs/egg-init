@@ -1,4 +1,10 @@
 
+1.16.1 / 2019-03-28
+==================
+
+**fixes**
+  * [[`f9734d4`](http://github.com/eggjs/egg-init/commit/f9734d4e243dbc8809a3b7b9503bd21db104f151)] - fix: deprecated info (#50) (TZ | 天猪 <<atian25@qq.com>>)
+
 1.16.0 / 2019-03-28
 ==================
 
