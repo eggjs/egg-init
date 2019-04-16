@@ -25,7 +25,7 @@ module.exports = {
   },
   list: {
     type: 'list',
-    desc: 'test default fn',
+    desc: 'choose',
     choices: [ 'listA', 'listB' ],
   },
 };

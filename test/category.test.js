@@ -44,7 +44,7 @@ describe('test/category.test', () => {
   });
 
   it('should work with prompt', function* () {
-    helper.mock([[ 'simple-app', 'this is xxx', 'TZ', helper.KEY_ENTER, 'test' ]]);
+    helper.mock([[ 'simple-app', 'this is xxx', 'TZ', helper.KEY_ENTER, 'test', helper.KEY_ENTER ]]);
     const boilerplatePath = path.join(__dirname, 'fixtures/simple-test');
     yield command.run(tmp, [ 'simple-app', '--force', '--template=' + boilerplatePath ]);
 
