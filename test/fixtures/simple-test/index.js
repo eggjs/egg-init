@@ -23,4 +23,9 @@ module.exports = {
       return 'filter-' + v;
     },
   },
+  list: {
+    type: 'list',
+    desc: 'test default fn',
+    choices: [ 'listA', 'listB' ],
+  },
 };
