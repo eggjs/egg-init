@@ -1,4 +1,10 @@
 
+1.17.0 / 2019-04-17
+==================
+
+**features**
+  * [[`36f2d86`](http://github.com/eggjs/egg-init/commit/36f2d86493f466a603cbd9bd40d76eab969d1e04)] - feat: question support other type from inquirer (#51) (Haoliang Gao <<sakura9515@gmail.com>>)
+
 1.16.1 / 2019-03-28
 ==================
 
