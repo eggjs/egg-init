@@ -6,6 +6,8 @@
 
 {{filterFn}}
 
+{{list}}
+
 ## QuickStart
 
 ### Development

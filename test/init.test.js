@@ -42,7 +42,7 @@ describe('test/init.test.js', () => {
   });
 
   it('should work with prompt', function* () {
-    helper.mock([[ 'simple-app', 'this is xxx', 'TZ', helper.KEY_ENTER, 'test' ]]);
+    helper.mock([[ 'simple-app', 'this is xxx', 'TZ', helper.KEY_ENTER, 'test', helper.KEY_ENTER ]]);
     const boilerplatePath = path.join(__dirname, 'fixtures/simple-test');
     yield command.run(tmp, [ 'simple-app', '--force', '--template=' + boilerplatePath ]);
 
@@ -55,6 +55,7 @@ describe('test/init.test.js', () => {
     const content = fs.readFileSync(path.join(command.targetDir, 'README.md'), 'utf-8');
     assert(/default-simple-app/.test(content));
     assert(/filter-test/.test(content));
+    assert(/listA/.test(content));
   });
 
   it('should prompt', function* () {
