@@ -1,4 +1,10 @@
 
+1.17.1 / 2019-04-24
+==================
+
+**fixes**
+  * [[`d816803`](http://github.com/eggjs/egg-init/commit/d816803cb5ec9afcee13d7408e90414aaeaec525)] - fix: remove encoding setting to read files (#53) (Yu Wenjie <<winjayyu@gmail.com>>)
+
 1.17.0 / 2019-04-17
 ==================
 
