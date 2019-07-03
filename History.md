@@ -1,4 +1,10 @@
 
+1.17.2 / 2019-07-03
+==================
+
+**fixes**
+  * [[`5508749`](http://github.com/eggjs/egg-init/commit/55087492bd5a26601ab13edabdd824278721e848)] - fix: add timeout when getPackageInfo (#54) (TZ | 天猪 <<atian25@qq.com>>)
+
 1.17.1 / 2019-04-24
 ==================
 
