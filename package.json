@@ -8,7 +8,9 @@
     "test": "npm run lint -- --fix && egg-bin test",
     "cov": "egg-bin cov",
     "ci": "npm run lint && egg-bin cov",
-    "autod": "autod"
+    "autod": "autod",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "preferGlobal": true,
   "bin": {
@@ -33,7 +35,8 @@
     "npm-updater": "^3.0.3",
     "proxy-agent": "^2.3.1",
     "urllib": "^2.33.0",
-    "yargs": "^11.1.0"
+    "yargs": "^11.1.0",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "autod": "^3.0.1",
@@ -62,5 +65,6 @@
   "engines": {
     "node": ">=6.0.0"
   },
-  "author": "fengmk2 <fengmk2@gmail.com> (http://fengmk2.com)"
+  "author": "fengmk2 <fengmk2@gmail.com> (http://fengmk2.com)",
+  "snyk": true
 }
