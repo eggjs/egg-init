@@ -18,8 +18,8 @@ describe('test/proxy.test.js', () => {
   let proxyServer;
   let proxyPort;
 
-  before(function* () {
-    yield rimraf(tmp);
+  before(async function() {
+    await rimraf(tmp);
     command = new Command();
     helper = new Helper(command);
   });
@@ -34,9 +34,9 @@ describe('test/proxy.test.js', () => {
 
   beforeEach(() => rimraf(tmp));
 
-  afterEach(function* () {
+  afterEach(async function() {
     mm.restore();
-    yield rimraf(tmp);
+    await rimraf(tmp);
     helper.restore();
   });
 
@@ -44,11 +44,11 @@ describe('test/proxy.test.js', () => {
     proxyServer.close();
   });
 
-  it('should work', function* () {
+  it('should work', async function() {
     mm(process.env, 'http_proxy', 'http://127.0.0.1:' + proxyPort);
 
     helper.mock([ helper.KEY_DOWN, [ 'test', 'this is xxx', 'TZ', helper.KEY_ENTER ]]);
-    yield command.run(tmp, [ 'prompt-app', '--force' ]);
+    await command.run(tmp, [ 'prompt-app', '--force' ]);
 
     assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
     assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
