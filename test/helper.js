@@ -1,5 +1,9 @@
 'use strict';
-
+function sleep(time) {
+  return new Promise(resolve => {
+    setTimeout(resolve, time);
+  });
+}
 module.exports = class Helper {
   constructor(command) {
     this.command = command;
@@ -24,15 +28,32 @@ module.exports = class Helper {
   mock(actions) {
     this.inquirer.prompt = opts => {
       const result = this.originPrompt.call(this.inquirer, opts);
-      const key = actions.shift() || '\n';
-      if (key) {
-        if (Array.isArray(opts) && !Array.isArray(key)) {
-          throw new Error(`prompt multiple question, but mock with only one key \`${key}\`, should provide array`);
-        } else {
-          this.sendKey(key);
-        }
+      const rl = result.ui.rl;
+      let keys = actions.shift() || '\n';
+      if (!Array.isArray(keys)) {
+        keys = [ keys ];
       }
-      return result;
+
+      let questionNumber = 1;
+      if (Array.isArray(opts)) {
+        questionNumber = opts.length;
+      }
+      if (questionNumber !== keys.length) {
+        throw new Error('the number of prompt question  must equal the number of mock keys');
+      }
+      this.sendKey(rl, keys);
+
+      /**
+       * Window will block after input.emit,input resume and sleep can fix this.
+       * The bug only happen when simulate user input.
+       * detail: https://github.com/SBoudrias/Inquirer.js/issues/870
+       */
+      return result.then(async v => {
+        rl.input.resume();
+        await sleep(10);
+        return v;
+      });
+
     };
   }
 
@@ -46,22 +67,24 @@ module.exports = class Helper {
   /**
    * send key to process.stdin
    *
-   * @param {String/Array} arr - key list, send one by one after a tick
-   * @return {Promise} after all sent
+   * @param {Object} rl - the instance of readline
+   * @param {Array} arr - key list, send one by one after a tick
    */
-  sendKey(arr) {
-    if (Array.isArray(arr)) {
-      return arr.reduce((promise, key) => {
-        return promise.then(() => this.sendKey(key));
-      }, Promise.resolve());
-    } else {
-      const key = arr;
-      return new Promise(resolve => {
-        setTimeout(() => {
-          process.stdin.emit('data', key + '\n');
-          resolve(key);
-        }, 10);
-      });
+  async sendKey(rl, arr) {
+
+    for (const key of arr) {
+      await sleep(200);
+
+      if (typeof key === 'string') {
+        rl.input.emit('keypress', key + '\r');
+      } else {
+
+        /**
+         * the key is a object
+         * @example {name:'return'}
+         */
+        rl.input.emit('keypress', '', key);
+      }
     }
   }
 };
