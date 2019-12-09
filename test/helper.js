@@ -1,4 +1,5 @@
 'use strict';
+const co = require('co');
 function sleep(time) {
   return new Promise(resolve => {
     setTimeout(resolve, time);
@@ -41,18 +42,18 @@ module.exports = class Helper {
       if (questionNumber !== keys.length) {
         throw new Error('the number of prompt question  must equal the number of mock keys');
       }
-      this.sendKey(rl, keys);
+      co(this.sendKey(rl, keys));
 
       /**
        * Window will block after input.emit,input resume and sleep can fix this.
        * The bug only happen when simulate user input.
        * detail: https://github.com/SBoudrias/Inquirer.js/issues/870
        */
-      return result.then(async v => {
+      return result.then(co.wrap(function* (v) {
         rl.input.resume();
-        await sleep(10);
+        yield sleep(10);
         return v;
-      });
+      }));
 
     };
   }
@@ -70,10 +71,10 @@ module.exports = class Helper {
    * @param {Object} rl - the instance of readline
    * @param {Array} arr - key list, send one by one after a tick
    */
-  async sendKey(rl, arr) {
+  * sendKey(rl, arr) {
 
     for (const key of arr) {
-      await sleep(200);
+      yield sleep(200);
 
       if (typeof key === 'string') {
         rl.input.emit('keypress', key + '\r');
