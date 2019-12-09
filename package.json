@@ -57,7 +57,7 @@
     "egg-init"
   ],
   "ci": {
-    "version": "6, 8, 10"
+    "version": "6, 8, 10, 12"
   },
   "engines": {
     "node": ">=6.0.0"
