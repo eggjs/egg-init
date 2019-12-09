@@ -1,10 +1,6 @@
 'use strict';
 const co = require('co');
-function sleep(time) {
-  return new Promise(resolve => {
-    setTimeout(resolve, time);
-  });
-}
+const sleep = require('mz-modules/sleep');
 module.exports = class Helper {
   constructor(command) {
     this.command = command;
