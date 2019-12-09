@@ -13,8 +13,8 @@ const Command = require('../lib/init_command');
 describe('test/category.test', () => {
   let command;
   let helper;
-  before(async function() {
-    await rimraf(tmp);
+  before(function* () {
+    yield rimraf(tmp);
     command = new Command({
       configName: 'egg-init-config-category',
     });
@@ -23,14 +23,14 @@ describe('test/category.test', () => {
 
   beforeEach(() => rimraf(tmp));
 
-  afterEach(async function() {
-    await rimraf(tmp);
+  afterEach(function* () {
+    yield rimraf(tmp);
     helper.restore();
   });
 
-  it('should work', async function() {
+  it('should work', function* () {
     const boilerplatePath = path.join(__dirname, 'fixtures/simple-test');
-    await command.run(tmp, [ 'simple-app', '--template=' + boilerplatePath, '--silent' ]);
+    yield command.run(tmp, [ 'simple-app', '--template=' + boilerplatePath, '--silent' ]);
 
     assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
     assert(fs.existsSync(path.join(command.targetDir, '.eslintrc')));
@@ -43,10 +43,10 @@ describe('test/category.test', () => {
     assert(/# simple-app/.test(content));
   });
 
-  it('should work with prompt', async function() {
+  it('should work with prompt', function* () {
     helper.mock([[ 'simple-app', 'this is xxx', 'TZ', helper.KEY_ENTER, 'test', helper.KEY_ENTER ]]);
     const boilerplatePath = path.join(__dirname, 'fixtures/simple-test');
-    await command.run(tmp, [ 'simple-app', '--force', '--template=' + boilerplatePath ]);
+    yield command.run(tmp, [ 'simple-app', '--force', '--template=' + boilerplatePath ]);
 
     assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
     assert(fs.existsSync(path.join(command.targetDir, '.eslintrc')));
@@ -59,9 +59,9 @@ describe('test/category.test', () => {
     assert(/filter-test/.test(content));
   });
 
-  it('should prompt', async function() {
+  it('should prompt', function* () {
     helper.mock([ helper.KEY_DOWN, [ 'test', 'this is xxx', 'TZ', helper.KEY_ENTER ]]);
-    await command.run(tmp, [ 'prompt-app', '--force' ]);
+    yield command.run(tmp, [ 'prompt-app', '--force' ]);
 
     assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
     assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
