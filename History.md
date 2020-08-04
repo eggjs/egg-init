@@ -1,4 +1,10 @@
 
+1.17.3 / 2019-12-09
+==================
+
+**fixes**
+  * [[`55b93ec`](http://github.com/eggjs/egg-init/commit/55b93ec79da90300da9f0067a606713565b34039)] - fix: block in win (#58) (supperchong <<2267805901@qq.com>>)
+
 1.17.2 / 2019-07-03
 ==================
 
