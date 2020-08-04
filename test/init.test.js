@@ -36,6 +36,9 @@ describe('test/init.test.js', () => {
     assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
     assert(fs.existsSync(path.join(command.targetDir, 'simple-app')));
     assert(fs.existsSync(path.join(command.targetDir, 'test', 'simple-app.test.js')));
+    assert(fs.existsSync(path.join(command.targetDir, 'resource', 'doc', 'index.md')));
+    assert(fs.lstatSync(path.join(command.targetDir, 'doc')).isSymbolicLink());
+    assert(fs.existsSync(path.join(command.targetDir, 'doc', 'index.md')));
 
     const content = fs.readFileSync(path.join(command.targetDir, 'README.md'), 'utf-8');
     assert(/# simple-app/.test(content));
