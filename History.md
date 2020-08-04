@@ -1,4 +1,10 @@
 
+2.0.0 / 2020-08-04
+==================
+
+**features**
+  * [[`77acca1`](http://github.com/eggjs/egg-init/commit/77acca1f1b8f5e9b8e53ee575e2571cd98f88b1b)] - feat: support symbolic link [BREAK CHANGE] (#62) (killa <<killa123@126.com>>)
+
 1.17.3 / 2019-12-09
 ==================
 
