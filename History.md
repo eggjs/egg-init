@@ -1,3 +1,8 @@
+2.0.1 / 2020-08-19
+==================
+
+**features**
+  * [[`77acca1`](http://github.com/eggjs/egg-init/commit/3d602df304ed03d71177be0eca32a02601d37082)] - feat: add .eslintrc (#63) (Suyi <<thonatos.yang@gmail.com>>)
 
 2.0.0 / 2020-08-04
 ==================
