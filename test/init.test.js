@@ -35,6 +35,7 @@ describe('test/init.test.js', () => {
     assert(fs.existsSync(path.join(command.targetDir, '.npmignore')));
     assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
     assert(fs.existsSync(path.join(command.targetDir, 'simple-app')));
+    assert(fs.existsSync(path.join(command.targetDir, 'view', '.eslintrc')));
     assert(fs.existsSync(path.join(command.targetDir, 'test', 'simple-app.test.js')));
     assert(fs.existsSync(path.join(command.targetDir, 'resource', 'doc', 'index.md')));
     assert(fs.lstatSync(path.join(command.targetDir, 'doc')).isSymbolicLink());
