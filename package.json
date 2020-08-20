@@ -27,7 +27,7 @@
     "inquirer": "^7.0.0",
     "is-type-of": "^1.2.1",
     "istextorbinary": "^2.5.1",
-    "mkdirp": "^0.5.1",
+    "mkdirp": "^1.0.0",
     "mz-modules": "^2.1.0",
     "node-homedir": "^1.1.1",
     "npm-updater": "^3.0.3",
