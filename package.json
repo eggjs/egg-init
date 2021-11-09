@@ -40,8 +40,8 @@
     "coffee": "^3.3.0",
     "egg-bin": "^1.11.1",
     "egg-ci": "^1.11.0",
-    "eslint": "^4.19.1",
-    "eslint-config-egg": "^6.0.0",
+    "eslint": "^6.6.0",
+    "eslint-config-egg": "^9.0.0",
     "mm": "^2.4.1",
     "power-assert": "^1.4.4",
     "proxy": "^0.2.4"
