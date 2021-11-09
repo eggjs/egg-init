@@ -1,5 +1,6 @@
 'use strict';
 
+const os = require('os');
 const fs = require('fs');
 const path = require('path');
 const rimraf = require('mz-modules/rimraf');
@@ -7,6 +8,7 @@ const assert = require('assert');
 const Helper = require('./helper');
 
 const tmp = path.join(__dirname, '../.tmp');
+const isWindows = os.platform() === 'win32';
 
 const Command = require('..');
 
@@ -38,8 +40,8 @@ describe('test/init.test.js', () => {
     assert(fs.existsSync(path.join(command.targetDir, 'view', '.eslintrc')));
     assert(fs.existsSync(path.join(command.targetDir, 'test', 'simple-app.test.js')));
     assert(fs.existsSync(path.join(command.targetDir, 'resource', 'doc', 'index.md')));
-    assert(fs.lstatSync(path.join(command.targetDir, 'doc')).isSymbolicLink());
-    assert(fs.existsSync(path.join(command.targetDir, 'doc', 'index.md')));
+    assert(isWindows ? true : fs.lstatSync(path.join(command.targetDir, 'doc')).isSymbolicLink());
+    assert(isWindows ? true : fs.existsSync(path.join(command.targetDir, 'doc', 'index.md')));
 
     const content = fs.readFileSync(path.join(command.targetDir, 'README.md'), 'utf-8');
     assert(/# simple-app/.test(content));
