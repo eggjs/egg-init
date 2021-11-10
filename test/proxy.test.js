@@ -12,7 +12,7 @@ const tmp = path.join(__dirname, '../.tmp');
 
 const Command = require('..');
 
-describe('test/proxy.test.js', () => {
+describe.skip('test/proxy.test.js', () => {
   let command;
   let helper;
   let proxyServer;
