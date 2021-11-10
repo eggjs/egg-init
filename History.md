@@ -1,3 +1,9 @@
+
+2.3.0 / 2021-11-10
+==================
+
+**features**
+  * [[`d88f359`](http://github.com/eggjs/egg-init/commit/d88f359d6f9b6668e3309d3f1d055b27e8a76aa6)] - feat: Update taobao npm registry url (Janlay <<36876080+Janlaywss@users.noreply.github.com>>)
 2.2.0 / 2020-08-19
 ==================
 
