@@ -1,6 +1,6 @@
 {
   "name": "egg-init",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Init egg app helper tools.",
   "main": "lib/init_command.js",
   "scripts": {
@@ -8,7 +8,8 @@
     "test": "npm run lint -- --fix && egg-bin test",
     "cov": "egg-bin cov",
     "ci": "npm run lint && egg-bin cov",
-    "autod": "autod"
+    "autod": "autod",
+    "contributor": "git-contributor"
   },
   "preferGlobal": true,
   "bin": {
@@ -42,6 +43,7 @@
     "egg-ci": "^1.11.0",
     "eslint": "^6.6.0",
     "eslint-config-egg": "^9.0.0",
+    "git-contributor": "^1.0.10",
     "mm": "^2.4.1",
     "power-assert": "^1.4.4",
     "proxy": "^1.0.0"
