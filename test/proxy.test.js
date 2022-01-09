@@ -44,7 +44,7 @@ describe('test/proxy.test.js', () => {
     proxyServer.close();
   });
 
-  it('should work', function* () {
+  it.skip('should work', function* () {
     mm(process.env, 'http_proxy', 'http://127.0.0.1:' + proxyPort);
 
     helper.mock([ helper.KEY_DOWN, [ 'test', 'this is xxx', 'TZ', helper.KEY_ENTER ]]);
