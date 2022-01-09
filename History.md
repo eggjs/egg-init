@@ -1,4 +1,10 @@
 
+2.3.1 / 2022-01-09
+==================
+
+**fixes**
+  * [[`53af148`](http://github.com/eggjs/egg-init/commit/53af148f622b2b093dbf1eaed12ae89d8cb43332)] - fix: move to chalk (#75) (TZ | 天猪 <<atian25@qq.com>>)
+
 2.3.0 / 2021-11-10
 ==================
 
