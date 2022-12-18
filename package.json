@@ -8,7 +8,6 @@
     "test": "npm run lint -- --fix && egg-bin test",
     "cov": "egg-bin cov",
     "ci": "npm run lint && egg-bin cov",
-    "autod": "autod",
     "contributor": "git-contributor"
   },
   "preferGlobal": true,
@@ -37,10 +36,8 @@
     "yargs": "^11.1.0"
   },
   "devDependencies": {
-    "autod": "^3.0.1",
     "coffee": "^3.3.0",
     "egg-bin": "^1.11.1",
-    "egg-ci": "^1.11.0",
     "eslint": "^4.19.1",
     "eslint-config-egg": "^6.0.0",
     "git-contributor": "^1.0.10",
@@ -58,12 +55,8 @@
     "egg",
     "egg-init"
   ],
-  "ci": {
-    "version": "10, 12, 14, 16",
-    "type": "github"
-  },
   "engines": {
     "node": ">=10.0.0"
   },
-  "author": "fengmk2 <fengmk2@gmail.com> (http://fengmk2.com)"
+  "author": "fengmk2 <fengmk2@gmail.com> (https://github.com/fengmk2)"
 }
