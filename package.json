@@ -27,14 +27,14 @@
     "globby": "^9.0.0",
     "inquirer": "^7.0.0",
     "is-type-of": "^1.2.1",
-    "istextorbinary": "^2.5.1",
+    "istextorbinary": "^3.0.0",
     "mkdirp": "^0.5.1",
     "mz-modules": "^2.1.0",
     "node-homedir": "^1.1.1",
     "npm-updater": "^3.0.3",
     "proxy-agent": "^2.3.1",
     "urllib": "^2.33.0",
-    "yargs": "^11.1.0"
+    "yargs": "^13.3.0"
   },
   "devDependencies": {
     "autod": "^3.0.1",
