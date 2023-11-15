@@ -32,7 +32,7 @@
     "mz-modules": "^2.1.0",
     "node-homedir": "^1.1.1",
     "npm-updater": "^3.0.3",
-    "proxy-agent": "^2.3.1",
+    "proxy-agent": "^4.0.0",
     "urllib": "^2.33.0",
     "yargs": "^11.1.0"
   },
