@@ -8,7 +8,6 @@
     "test": "npm run lint -- --fix && egg-bin test",
     "cov": "egg-bin cov",
     "ci": "npm run lint && egg-bin cov",
-    "autod": "autod",
     "contributor": "git-contributor"
   },
   "preferGlobal": true,
@@ -21,32 +20,26 @@
   ],
   "dependencies": {
     "chalk": "^4.0.0",
-    "co": "^4.6.0",
-    "compressing": "^1.4.0",
+    "compressing": "^1.10.0",
     "egg-init-config": "^1.5.0",
     "globby": "^9.0.0",
-    "inquirer": "^7.0.0",
-    "is-type-of": "^1.2.1",
+    "inquirer": "^8.2.6",
+    "is-type-of": "^2.1.0",
     "istextorbinary": "^2.5.1",
     "mkdirp": "^0.5.1",
     "mz-modules": "^2.1.0",
-    "node-homedir": "^1.1.1",
+    "node-homedir": "^2.0.0",
     "npm-updater": "^3.0.3",
-    "proxy-agent": "^2.3.1",
-    "urllib": "^2.33.0",
+    "urllib": "^3.19.3",
     "yargs": "^11.1.0"
   },
   "devDependencies": {
-    "autod": "^3.0.1",
-    "coffee": "^3.3.0",
-    "egg-bin": "^1.11.1",
-    "egg-ci": "^1.11.0",
-    "eslint": "^6.6.0",
-    "eslint-config-egg": "^9.0.0",
-    "git-contributor": "^1.0.10",
-    "mm": "^2.4.1",
-    "power-assert": "^1.4.4",
-    "proxy": "^1.0.0"
+    "coffee": "5",
+    "egg-bin": "6",
+    "eslint": "8",
+    "eslint-config-egg": "13",
+    "git-contributor": "2",
+    "mm": "^2.4.1"
   },
   "homepage": "https://github.com/eggjs/egg-init",
   "repository": {
@@ -58,12 +51,8 @@
     "egg",
     "egg-init"
   ],
-  "ci": {
-    "version": "10, 12, 14, 16",
-    "type": "github"
-  },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=16.0.0"
   },
-  "author": "fengmk2 <fengmk2@gmail.com> (http://fengmk2.com)"
+  "author": "fengmk2 <fengmk2@gmail.com> (https://github.com/fengmk2)"
 }

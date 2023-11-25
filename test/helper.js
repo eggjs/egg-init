@@ -1,6 +1,5 @@
-'use strict';
-const co = require('co');
 const sleep = require('mz-modules/sleep');
+
 module.exports = class Helper {
   constructor(command) {
     this.command = command;
@@ -38,19 +37,9 @@ module.exports = class Helper {
       if (questionNumber !== keys.length) {
         throw new Error('the number of prompt question  must equal the number of mock keys');
       }
-      co(this.sendKey(rl, keys));
+      this.sendKey(rl, keys);
 
-      /**
-       * Window will block after input.emit,input resume and sleep can fix this.
-       * The bug only happen when simulate user input.
-       * detail: https://github.com/SBoudrias/Inquirer.js/issues/870
-       */
-      return result.then(co.wrap(function* (v) {
-        rl.input.resume();
-        yield sleep(10);
-        return v;
-      }));
-
+      return result;
     };
   }
 
@@ -67,10 +56,9 @@ module.exports = class Helper {
    * @param {Object} rl - the instance of readline
    * @param {Array} arr - key list, send one by one after a tick
    */
-  * sendKey(rl, arr) {
-
+  async sendKey(rl, arr) {
     for (const key of arr) {
-      yield sleep(200);
+      await sleep(200);
 
       if (typeof key === 'string') {
         rl.input.emit('keypress', key + '\r');

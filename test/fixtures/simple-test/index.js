@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = {
   name: {
     desc: 'project name',
