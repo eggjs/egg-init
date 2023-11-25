@@ -23,7 +23,7 @@
     "compressing": "^1.10.0",
     "egg-init-config": "^1.5.0",
     "globby": "^9.0.0",
-    "inquirer": "^8.2.6",
+    "inquirer": "^7.3.3",
     "is-type-of": "^2.1.0",
     "istextorbinary": "^2.5.1",
     "mkdirp": "^0.5.1",
