@@ -1,3 +1,22 @@
+# Changelog
+
+## [3.0.0](https://github.com/eggjs/egg-init/compare/v2.3.1...v3.0.0) (2023-11-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop Node.js < 16 support
+
+- Drop http proxy support
+
+### Features
+
+* drop Node.js < 16 support ([#82](https://github.com/eggjs/egg-init/issues/82)) ([0fd85c4](https://github.com/eggjs/egg-init/commit/0fd85c4d2a2f64c99b1f9a27fa55805a45bde6ac))
+
+
+### Bug Fixes
+
+* ci failed on windows ([#73](https://github.com/eggjs/egg-init/issues/73)) ([4353482](https://github.com/eggjs/egg-init/commit/4353482f11ae2c1269c0f7cedcc23ea81e95286f))
 
 2.3.0 / 2021-11-10
 ==================
@@ -206,4 +225,3 @@
 ==================
 
   * reinit project
-
