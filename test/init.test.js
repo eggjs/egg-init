@@ -1,5 +1,3 @@
-'use strict';
-
 const os = require('os');
 const fs = require('fs');
 const path = require('path');
@@ -15,22 +13,22 @@ const Command = require('..');
 describe('test/init.test.js', () => {
   let command;
   let helper;
-  before(function* () {
-    yield rimraf(tmp);
+  before(async () => {
+    await rimraf(tmp);
     command = new Command();
     helper = new Helper(command);
   });
 
   beforeEach(() => rimraf(tmp));
 
-  afterEach(function* () {
-    yield rimraf(tmp);
+  afterEach(async () => {
+    await rimraf(tmp);
     helper.restore();
   });
 
-  it('should work', function* () {
+  it('should work', async () => {
     const boilerplatePath = path.join(__dirname, 'fixtures/simple-test');
-    yield command.run(tmp, [ 'simple-app', '--template=' + boilerplatePath, '--silent' ]);
+    await command.run(tmp, [ 'simple-app', '--template=' + boilerplatePath, '--silent' ]);
 
     assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
     assert(fs.existsSync(path.join(command.targetDir, '.eslintrc')));
@@ -47,10 +45,10 @@ describe('test/init.test.js', () => {
     assert(/# simple-app/.test(content));
   });
 
-  it('should work with prompt', function* () {
+  it('should work with prompt', async () => {
     helper.mock([[ 'simple-app', 'this is xxx', 'TZ', helper.KEY_ENTER, 'test', helper.KEY_ENTER ]]);
     const boilerplatePath = path.join(__dirname, 'fixtures/simple-test');
-    yield command.run(tmp, [ 'simple-app', '--force', '--template=' + boilerplatePath ]);
+    await command.run(tmp, [ 'simple-app', '--force', '--template=' + boilerplatePath ]);
 
     assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
     assert(fs.existsSync(path.join(command.targetDir, '.eslintrc')));
@@ -64,9 +62,9 @@ describe('test/init.test.js', () => {
     assert(/listA/.test(content));
   });
 
-  it('should prompt', function* () {
+  it('should prompt', async () => {
     helper.mock([ helper.KEY_DOWN, [ 'test', 'this is xxx', 'TZ', helper.KEY_ENTER ]]);
-    yield command.run(tmp, [ 'prompt-app', '--force' ]);
+    await command.run(tmp, [ 'prompt-app', '--force' ]);
 
     assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
     assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
@@ -82,8 +80,8 @@ describe('test/init.test.js', () => {
     assert(command.replaceTemplate('hi, \\{{ user }}', { user: 'egg' }) === 'hi, {{ user }}');
   });
 
-  it('should works with remote boilerplate', function* () {
-    yield command.run(tmp, [ 'simple-app', '--type=simple', '--silent' ]);
+  it('should works with remote boilerplate', async () => {
+    await command.run(tmp, [ 'simple-app', '--type=simple', '--silent' ]);
 
     assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
     assert(fs.existsSync(path.join(command.targetDir, '.eslintrc')));
