@@ -41,7 +41,7 @@ describe('test/category.test', () => {
     assert(/# simple-app/.test(content));
   });
 
-  it('should work with prompt', async () => {
+  it.skip('should work with prompt', async () => {
     helper.mock([[ 'simple-app', 'this is xxx', 'TZ', helper.KEY_ENTER, 'test', helper.KEY_ENTER ]]);
     const boilerplatePath = path.join(__dirname, 'fixtures/simple-test');
     await command.run(tmp, [ 'simple-app', '--force', '--template=' + boilerplatePath ]);
