@@ -39,16 +39,7 @@ module.exports = class Helper {
       }
       this.sendKey(rl, keys);
 
-      /**
-       * Window will block after input.emit, input resume and sleep can fix this.
-       * The bug only happen when simulate user input.
-       * detail: https://github.com/SBoudrias/Inquirer.js/issues/870
-       */
-      return result.then(async v => {
-        rl.input.resume();
-        await sleep(10);
-        return v;
-      });
+      return result;
     };
   }
 
