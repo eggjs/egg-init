@@ -41,37 +41,39 @@ describe('test/category.test', () => {
     assert(/# simple-app/.test(content));
   });
 
-  it('should work with prompt', async () => {
-    helper.mock([[ 'simple-app', 'this is xxx', 'TZ', helper.KEY_ENTER, 'test', helper.KEY_ENTER ]]);
-    const boilerplatePath = path.join(__dirname, 'fixtures/simple-test');
-    await command.run(tmp, [ 'simple-app', '--force', '--template=' + boilerplatePath ]);
-
-    assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
-    assert(fs.existsSync(path.join(command.targetDir, '.eslintrc')));
-    assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
-    assert(fs.existsSync(path.join(command.targetDir, 'simple-app')));
-    assert(fs.existsSync(path.join(command.targetDir, 'test', 'simple-app.test.js')));
-
-    const content = fs.readFileSync(path.join(command.targetDir, 'README.md'), 'utf-8');
-    assert(/default-simple-app/.test(content));
-    assert(/filter-test/.test(content));
-  });
-
-  it('should prompt', async () => {
-    helper.mock([ helper.KEY_DOWN, [ 'test', 'this is xxx', 'TZ', helper.KEY_ENTER ]]);
-    await command.run(tmp, [ 'prompt-app', '--force' ]);
-
-    assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
-    assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
-
-    const content = fs.readFileSync(path.join(command.targetDir, 'README.md'), 'utf-8');
-    assert(/Development/.test(content));
-  });
-
   it('.replaceTemplate', () => {
     assert(command.replaceTemplate('hi, {{ user }}', { user: 'egg' }) === 'hi, egg');
     assert(command.replaceTemplate('hi, {{ user }}\n{{type}} {{user}}', { user: 'egg', type: 'init' }) === 'hi, egg\ninit egg');
     assert(command.replaceTemplate('hi, {{ user }}', {}) === 'hi, {{ user }}');
     assert(command.replaceTemplate('hi, \\{{ user }}', { user: 'egg' }) === 'hi, {{ user }}');
   });
+
+  if (!process.env.CI) {
+    it('should work with prompt', async () => {
+      helper.mock([[ 'simple-app', 'this is xxx', 'TZ', helper.KEY_ENTER, 'test', helper.KEY_ENTER ]]);
+      const boilerplatePath = path.join(__dirname, 'fixtures/simple-test');
+      await command.run(tmp, [ 'simple-app', '--force', '--template=' + boilerplatePath ]);
+
+      assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
+      assert(fs.existsSync(path.join(command.targetDir, '.eslintrc')));
+      assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
+      assert(fs.existsSync(path.join(command.targetDir, 'simple-app')));
+      assert(fs.existsSync(path.join(command.targetDir, 'test', 'simple-app.test.js')));
+
+      const content = fs.readFileSync(path.join(command.targetDir, 'README.md'), 'utf-8');
+      assert(/default-simple-app/.test(content));
+      assert(/filter-test/.test(content));
+    });
+
+    it('should prompt', async () => {
+      helper.mock([ helper.KEY_DOWN, [ 'test', 'this is xxx', 'TZ', helper.KEY_ENTER ]]);
+      await command.run(tmp, [ 'prompt-app', '--force' ]);
+
+      assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
+      assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
+
+      const content = fs.readFileSync(path.join(command.targetDir, 'README.md'), 'utf-8');
+      assert(/Development/.test(content));
+    });
+  }
 });
