@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/eggjs/egg-init/compare/v3.0.0...v3.0.1) (2023-11-26)
+
+
+### Bug Fixes
+
+* remove updater ([#83](https://github.com/eggjs/egg-init/issues/83)) ([78e014f](https://github.com/eggjs/egg-init/commit/78e014f1800bea48f8477ffc9a3843c82bb0fa83))
+
 ## [3.0.0](https://github.com/eggjs/egg-init/compare/v2.3.1...v3.0.0) (2023-11-25)
 
 
