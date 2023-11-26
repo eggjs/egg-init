@@ -29,7 +29,6 @@
     "mkdirp": "^0.5.1",
     "mz-modules": "^2.1.0",
     "node-homedir": "^2.0.0",
-    "npm-updater": "^3.0.3",
     "urllib": "^3.19.3",
     "yargs": "^11.1.0"
   },
