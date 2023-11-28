@@ -22,7 +22,7 @@
     "chalk": "^4.0.0",
     "compressing": "^1.10.0",
     "egg-init-config": "^1.5.0",
-    "globby": "^9.0.0",
+    "globby": "^10.0.0",
     "inquirer": "^8.2.6",
     "is-type-of": "^2.1.0",
     "istextorbinary": "^2.5.1",
@@ -30,7 +30,7 @@
     "mz-modules": "^2.1.0",
     "node-homedir": "^2.0.0",
     "urllib": "^3.19.3",
-    "yargs": "^11.1.0"
+    "yargs": "^13.2.4"
   },
   "devDependencies": {
     "coffee": "5",
