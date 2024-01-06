@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.2](https://github.com/eggjs/egg-init/compare/v3.0.1...v3.0.2) (2024-01-06)
+
+
+### Bug Fixes
+
+* remove unuse pkgInfo ([#85](https://github.com/eggjs/egg-init/issues/85)) ([7615d4a](https://github.com/eggjs/egg-init/commit/7615d4ad8c180b1631b90f50c6a19d91e2ba70d4))
+
 ## [3.0.1](https://github.com/eggjs/egg-init/compare/v3.0.0...v3.0.1) (2023-11-26)
 
 
