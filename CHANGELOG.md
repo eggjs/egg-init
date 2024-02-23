@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0](https://github.com/eggjs/egg-init/compare/v3.0.2...v3.1.0) (2024-02-23)
+
+
+### Features
+
+* add npmrc to file mapping ([#86](https://github.com/eggjs/egg-init/issues/86)) ([66e35e4](https://github.com/eggjs/egg-init/commit/66e35e4621061fb6e31619e433c336ebb8706b77))
+
 ## [3.0.2](https://github.com/eggjs/egg-init/compare/v3.0.1...v3.0.2) (2024-01-06)
 
 
