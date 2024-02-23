@@ -32,6 +32,7 @@ describe('test/init.test.js', () => {
 
     assert(fs.existsSync(path.join(command.targetDir, '.gitignore')));
     assert(fs.existsSync(path.join(command.targetDir, '.eslintrc')));
+    assert(fs.existsSync(path.join(command.targetDir, '.npmrc')));
     assert(fs.existsSync(path.join(command.targetDir, '.npmignore')));
     assert(fs.existsSync(path.join(command.targetDir, 'package.json')));
     assert(fs.existsSync(path.join(command.targetDir, 'simple-app')));
