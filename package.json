@@ -29,7 +29,7 @@
     "mkdirp": "^0.5.1",
     "mz-modules": "^2.1.0",
     "node-homedir": "^2.0.0",
-    "urllib": "^3.19.3",
+    "urllib": "^4.0.0",
     "yargs": "^11.1.0"
   },
   "devDependencies": {
